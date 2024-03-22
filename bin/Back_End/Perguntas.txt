@@ -1,0 +1,50 @@
+Qual é a capital do Brasil?;São Paulo;Rio de Janeiro;Brasília;Salvador / Gabarito: c Brasília
+Quem escreveu "Dom Quixote"?;Machado de Assis;Miguel de Cervantes;Gabriel García Márquez;William Shakespeare / Gabarito: b Miguel de Cervantes
+Qual é o maior planeta do sistema solar?;Terra;Júpiter;Saturno;Marte / Gabarito: b Júpiter
+Qual é o maior oceano do mundo?;Atlântico;Índico;Pacífico;Ártico / Gabarito: c Pacífico
+Quem pintou a Mona Lisa?;Vincent van Gogh;Pablo Picasso;Leonardo da Vinci;Michelangelo / Gabarito: c Leonardo da Vinci
+Qual é o símbolo químico para o oxigênio?;O;Ox;O2;Oxg / Gabarito: a O
+Quem foi o primeiro presidente dos Estados Unidos?;George Washington;Abraham Lincoln;Thomas Jefferson;John Adams / Gabarito: a George Washington
+Qual é o animal terrestre mais rápido?;Guepardo;Antílope;Leão;Jaguar / Gabarito: a Guepardo
+Qual é o maior rio do mundo em volume de água?;Amazonas;Nilo;Yangtzé;Mississipi / Gabarito: a Amazonas
+Quem escreveu "A Metamorfose"?;Franz Kafka;Fyodor Dostoevsky;James Joyce;Virginia Woolf / Gabarito: a Franz Kafka
+Qual é a fódrmula química da água?;H2O2;H2O;HO;O2H / Gabarito: b H2O
+Quem foi o primeiro homem a pisar na Lua?;Buzz Aldrin;Neil Armstrong;Michael Collins;Yuri Gagarin / Gabarito: b Neil Armstrong
+Em que país nasceu o pintor Pablo Picasso?;França;Espanha;Itália;Alemanha / Gabarito: b Espanha
+Qual é o elemento mais abundante na crosta terrestre?;Ferro;Alumínio;Oxigênio;Silício / Gabarito: d Silício
+Quem foi o primeiro imperador romano?;Augusto;Júlio César;Nero;Trajano / Gabarito: a Augusto
+Qual é a capital da Argentina?;Santiago;Buenos Aires;Lima;Montevidéu / Gabarito: b Buenos Aires
+Quem escreveu "O Pequeno Príncipe"?;Antoine de Saint-Exupéry;J.K. Rowling;Lewis Carroll;Roald Dahl / Gabarito: a Antoine de Saint-Exupéry
+Qual é a montanha mais alta do mundo?;Everest;K2;Kilimanjaro;Mont Blanc / Gabarito: a Everest
+Qual é o maior deserto do mundo?;Saara;Atacama;Gobi;Antártica / Gabarito: a Saara
+Quem escreveu "1984"?;Aldous Huxley;George Orwell;Ray Bradbury;H.G. Wells / Gabarito: b George Orwell
+Qual é a maior cordilheira do mundo?;Andes;Himalaias;Montanhas Rochosas;Alpes / Gabarito: b Himalaias
+Quem foi o primeiro presidente do Brasil?;Getúlio Vargas;Juscelino Kubitschek;Deodoro da Fonseca;Marechal Floriano Peixoto / Gabarito: c Deodoro da Fonseca
+Qual é o segundo maior país do mundo em área territorial?;Estados Unidos;China;Canadá;Brasil / Gabarito: c Canadá
+Quem foi o autor de "O Processo"?;Franz Kafka;Albert Camus;Fyodor Dostoevsky;Gabriel García Márquez / Gabarito: a Franz Kafka
+Qual é o maior animal terrestre?;Elefante africano;Baleia azul;Girafa;Crocodilo do Nilo / Gabarito: a Elefante africano
+Quem escreveu "Crime e Castigo"?;Leo Tolstoy;Fyodor Dostoevsky;Anton Chekhov;Ivan Turgenev / Gabarito: b Fyodor Dostoevsky
+Qual é o país com a maior população do mundo?;Brasil;Índia;China;Estados Unidos / Gabarito: c China
+Quem foi o primeiro astronauta a orbitar a Terra?;Yuri Gagarin;Neil Armstrong;Buzz Aldrin;John Glenn / Gabarito: a Yuri Gagarin
+Qual é o elemento químico mais pesado da natureza?;Urânio;Ouro;Plutônio;Ununóctio / Gabarito: d Ununóctio
+Quem é o autor da teoria da relatividade?;Isaac Newton;Albert Einstein;Stephen Hawking;Galileu Galilei / Gabarito: b Albert Einstein
+Qual é o menor planeta do sistema solar?;Terra;Vênus;Marte;Mercúrio / Gabarito: d Mercúrio
+Quem foi o primeiro presidente negro da África do Sul?;Nelson Mandela;Desmond Tutu;Thabo Mbeki;Jacob Zuma / Gabarito: a Nelson Mandela
+Qual é o autor de "O Retrato de Dorian Gray"?;Oscar Wilde;Charles Dickens;Jane Austen;Edgar Allan Poe / Gabarito: a Oscar Wilde
+Qual é o processo pelo qual as plantas produzem sua própria comida?;Respiração;Fotossíntese;Digestão;Transpiração / Gabarito: b Fotossíntese
+Quem escreveu "Os Miseráveis"?;Gustave Flaubert;Victor Hugo;Alexandre Dumas;Honoré de Balzac / Gabarito: b Victor Hugo
+Qual é o maior animal marinho?;Baleia azul;Tubarão-baleia;Orca;Cachalote / Gabarito: a Baleia azul
+Quem foi o autor de "Odisseia"?;Sófocles;Homero;Ésquilo;Virgílio / Gabarito: b Homero
+Qual é a montanha mais alta da América do Sul?;Aconcágua;Monte Roraima;Huascarán;Monte Pissis / Gabarito: a Aconcágua
+Quem foi o primeiro ser humano a viajar para o espaço duas vezes?;Yuri Gagarin;Neil Armstrong;Buzz Aldrin;John Glenn / Gabarito: d John Glenn
+Qual é o país com a maior área de floresta tropical do mundo?;Brasil;Congo;Indonésia;Peru / Gabarito: a Brasil
+Quem é o criador da obra "Guernica"?;Pablo Picasso;Salvador Dalí;Vincent van Gogh;Claude Monet / Gabarito: a Pablo Picasso
+Qual é o ácido presente no limão?;Ácido clorídrico;Ácido acético;Ácido cítrico;Ácido sulfúrico / Gabarito: c Ácido cítrico
+Quem é o autor de "Odisseia"?;Sófocles;Homero;Ésquilo;Virgílio / Gabarito: b Homero
+Qual é o maior animal marinho?;Baleia azul;Tubarão-baleia;Orca;Cachalote / Gabarito: a Baleia azul
+Quem escreveu "A Origem das Espécies"?;Charles Darwin;Sigmund Freud;Albert Einstein;Gregor Mendel / Gabarito: a Charles Darwin
+Qual é o processo pelo qual as plantas produzem sua própria comida?;Respiração;Fotossíntese;Digestão;Transpiração / Gabarito: b Fotossíntese
+Quem é considerado o pai da psicanálise?;Sigmund Freud;Carl Jung;Alfred Adler;Ivan Pavlov / Gabarito: a Sigmund Freud
+Qual é a capital do Acre?;Aracaju;Rio Branco;Boa Vista;Salvador / Gabarito: b Rio Branco
+Em que ano foi lançado o filme "Titanic" no Brasil?;1989;1994;1998;2000 / Gabarito: c 1998
+Qual número está escrito no expresso de Hogwarts?;9 3/4;5923;1999;5972 / Gabarito d 5972
