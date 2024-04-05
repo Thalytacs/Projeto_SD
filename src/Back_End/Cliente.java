@@ -37,7 +37,8 @@ public class Cliente {
     public String[] receberPerguntas() {
     	String[] perguntas = new String[10];
     	try {
-    		BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    		BufferedReader doServidor = new BufferedReader(
+    				new InputStreamReader(socket.getInputStream()));
             for (int i = 0; i < 10; i++) {
             	System.out.println("Pegou a pergunta");
             	
@@ -69,6 +70,21 @@ public class Cliente {
     		System.out.println(e.getMessage());
     	}
     	
+    }
+    
+    public String existePartidaPrivada() {
+    	String resp = "0";
+    	
+    	try {
+    		BufferedReader doServidor = new BufferedReader(
+				new InputStreamReader(socket.getInputStream()));
+    	
+    		resp = doServidor.readLine();
+    	} catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}
+    	
+    	return resp;
     }
 }
 

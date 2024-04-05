@@ -36,6 +36,9 @@ public class Partida_Publica extends Thread {
         	
             // Vai iniciar duas threads, uma para cada jogador
             // No final usa join
+        	
+        	
+        	
             String[] gabarito = new String[10];
             String caminho = "C:\\Users\\thaly\\Desktop\\Projeto_SD\\src\\Back_End\\Perguntas.txt";
             BufferedReader lerArquivo = new BufferedReader(new FileReader(caminho));

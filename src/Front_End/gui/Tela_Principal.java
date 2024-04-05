@@ -69,20 +69,10 @@ public class Tela_Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cliente = new Cliente();
 				cliente.criarPartida(e.getActionCommand());
-			
-			try {
-				//BufferedWriter paraServidor = new BufferedWriter(new OutputStreamWriter(cliente.socket.getOutputStream()));
-				
-				//paraServidor.write(getWarningString())
-			} catch(Exception e1) {
-				
-			}
-				
-				
-				tela.setVisible(false);
-				
+						
 				Tela_Jogo tela2 = new Tela_Jogo(cliente);
 				
+				tela.setVisible(false);
 				tela2.setVisible(true);
 			}
 		});
@@ -102,6 +92,7 @@ public class Tela_Principal extends JFrame {
 				Tela_Jogo tela2 = new Tela_Jogo(cliente);
 				
 				tela.setVisible(false);
+				tela2.setVisible(true);
 			}
 		});
 		buttonPrivate.setBounds(160, 55, 134, 29);
@@ -120,9 +111,14 @@ public class Tela_Principal extends JFrame {
 				} else {
 					cliente = new Cliente();
 					cliente.criarPartida(codigo);
-					Tela_Jogo tela2 = new Tela_Jogo(cliente);
+					if(cliente.existePartidaPrivada().equals("1")) {
+						Tela_Jogo tela2 = new Tela_Jogo(cliente, codigo);
 					
-					tela.setVisible(false);
+						tela.setVisible(false);
+						tela2.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Código inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+					}					
 				}
 			}
 		});

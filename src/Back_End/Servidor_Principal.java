@@ -2,6 +2,7 @@ package Back_End;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -52,12 +53,23 @@ public class Servidor_Principal {
                 }
 
                 else {
+                	Boolean flag = false;
+                	
                     for (Partida_Privada partida : partidasPrivadas) {
                         if (Integer.parseInt(resultado) == partida.codigo) {
                             partida.setJogador2(new Conexao_Jogador(socket));
                             partida.start();
+                            flag = true;
                             break;
                         }
+                    }
+                    
+                    if(!flag) {
+                    	PrintWriter paraCliente = new PrintWriter(socket.getOutputStream(), true);
+                    	
+                    	paraCliente.print("0");
+                    	
+                    	paraCliente.close();
                     }
                 }
             }
