@@ -1,16 +1,15 @@
 package Back_End;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Servidor_Principal {
-    private static List<Conexao_Jogador> esperandoJogadores = new ArrayList<>();
     private static List<Partida_Privada> partidasPrivadas = new ArrayList<>();
-    private static int MAX_PLAYERS = 2;
+    private static List<Partida_Publica> partidasPublicas = new ArrayList<>();
 
     @SuppressWarnings("resource")
     public static void main(String[] args) {
@@ -18,33 +17,30 @@ public class Servidor_Principal {
         // existente)
         try {
             ServerSocket servidor = new ServerSocket(12345);
-            List<Conexao_Jogador> jogadores = new ArrayList<>();
-            byte[] dado = new byte[256];
 
-            DatagramPacket pkg = new DatagramPacket(dado, dado.length);
-
-            DatagramSocket receber = new DatagramSocket();
-
-            System.out.println("Servidor iniciado. \n Aguardando conexões...");
+            System.out.println("Servidor iniciado. \nAguardando conexões...");
             while (true) {
                 Socket socket = servidor.accept();
-                receber.receive(pkg);
 
-                String resultado = String.valueOf(pkg.getData());
+                BufferedReader ler = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String resultado = ler.readLine();
 
                 if (resultado.equals("1")) {
                     System.out.println("Novo jogador conectado: " + socket);
                     Conexao_Jogador jogador = new Conexao_Jogador(socket);
+                    Partida_Publica partida;
 
-                    esperandoJogadores.add(jogador);
-                    if (esperandoJogadores.size() >= MAX_PLAYERS) {
-
-                        for (int i = 0; i < MAX_PLAYERS; i++) {
-                            jogadores.add(esperandoJogadores.remove(0));
-                        }
-                        Partida_Publica partida = new Partida_Publica(jogadores);
+                    if (partidasPublicas.isEmpty()) {
+                        partida = new Partida_Publica(jogador);
+                        partidasPublicas.add(partida);
+                        System.out.println("Criou partida publica");
+                    }else{
+                        partida = partidasPublicas.remove(0);
+                        partida.setJogador2(jogador);
                         partida.start();
+                        System.out.println("Startou partida publica");
                     }
+                    
                 }
 
                 else if (resultado.equals("2")) {
@@ -52,9 +48,9 @@ public class Servidor_Principal {
                     Conexao_Jogador jogador = new Conexao_Jogador(socket);
 
                     Partida_Privada partida = new Partida_Privada(jogador);
-                    partidasPrivadas.add(partida);                    
+                    partidasPrivadas.add(partida);
                 }
-                
+
                 else {
                     for (Partida_Privada partida : partidasPrivadas) {
                         if (Integer.parseInt(resultado) == partida.codigo) {
