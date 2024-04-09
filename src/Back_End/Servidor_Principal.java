@@ -1,7 +1,11 @@
 package Back_End;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -44,11 +48,24 @@ public class Servidor_Principal {
                     
                 }
 
-                else if (resultado.equals("2")) {
-                    System.out.println("Criando nova partida privada: " + socket);
+                else if (resultado.equals("2")) {                	
+                	System.out.println("Criando nova partida privada: " + socket);
                     Conexao_Jogador jogador = new Conexao_Jogador(socket);
 
                     Partida_Privada partida = new Partida_Privada(jogador);
+                    
+                    try {
+            			DataOutputStream paraCliente = new DataOutputStream(jogador.getSocket().getOutputStream());
+            			
+            			System.out.println("Antes");
+            			
+            			paraCliente.writeBytes(partida.codigo.toString() + '\n');
+            			
+            			System.out.println("Depois");
+            		} catch (IOException e) {
+            			e.printStackTrace();
+            		}
+                    
                     partidasPrivadas.add(partida);
                 }
 

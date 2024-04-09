@@ -1,5 +1,7 @@
 package Back_End;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 public class Partida_Privada extends Partida_Publica {
@@ -7,7 +9,8 @@ public class Partida_Privada extends Partida_Publica {
 
     public Partida_Privada(Conexao_Jogador jogador1){
         super(jogador1);
-        this.codigo = new Random().nextInt();
+        this.codigo = new Random().nextInt(1000, 9999999);
+        
         System.out.println("Código: " + codigo);
     }
 

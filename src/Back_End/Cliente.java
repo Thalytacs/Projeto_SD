@@ -22,9 +22,9 @@ public class Cliente {
         try {
             // Solicita conexao com o servidor
             this.socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-
+            
             PrintWriter paraServidor = new PrintWriter(socket.getOutputStream(), true);
-            paraServidor.println(codigo);
+            paraServidor.println(codigo+'\n');
 
             //Mudar para dialogo do Jpanel/frame
             System.out.println("Conectado ao servidor.");

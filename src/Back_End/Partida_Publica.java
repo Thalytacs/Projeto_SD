@@ -51,7 +51,9 @@ public class Partida_Publica extends Thread {
                     break;
                 }
             }
+            
             System.out.println("Selecionou as perguntas");
+            
             List<Integer> listaOrdenada = new ArrayList<>(valoresUnicos);
 
             Collections.sort(listaOrdenada);
@@ -59,7 +61,10 @@ public class Partida_Publica extends Thread {
             
             for (int i = 1, contador = 0; i <= 50 && contador <= 9; i++) {
                 String linha = lerArquivo.readLine();
-
+                //System.out.println("Linha: " + linha);
+                //System.out.println("Contador: " + contador);
+                //System.out.println("Tamanho Perguntas: " + perguntas.length);
+                //System.out.println("Tamanho Gabarito: " + gabarito.length);
                 if (i == listaOrdenada.get(contador)) {
                     perguntas[contador] = linha.split("/")[0];
                     gabarito[contador] = linha.split(":")[1];
@@ -77,8 +82,8 @@ public class Partida_Publica extends Thread {
             		new OutputStreamWriter(jogador2.getSocket().getOutputStream()));
 
             for (int i = 0; i < 10; i++) {
-                paraCliente1.write(perguntas[i]);
-                paraCliente2.write(perguntas[i]);
+                paraCliente1.write(perguntas[i] + '\n');
+                paraCliente2.write(perguntas[i] + '\n');
                 
                 paraCliente1.flush();
                 paraCliente2.flush();

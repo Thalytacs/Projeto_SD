@@ -10,8 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import java.awt.Button;
 import javax.swing.SwingConstants;
@@ -70,7 +74,7 @@ public class Tela_Principal extends JFrame {
 				cliente = new Cliente();
 				cliente.criarPartida(e.getActionCommand());
 						
-				Tela_Jogo tela2 = new Tela_Jogo(cliente);
+				Tela_Jogo tela2 = new Tela_Jogo(cliente, null);
 				
 				tela.setVisible(false);
 				tela2.setVisible(true);
@@ -87,11 +91,25 @@ public class Tela_Principal extends JFrame {
 			//Ação do botão
 			public void actionPerformed(ActionEvent e) {
 				cliente = new Cliente();
-				cliente.criarPartida(e.getActionCommand());
+				String codigo = null;
 				
-				Tela_Jogo tela2 = new Tela_Jogo(cliente);
+				cliente.criarPartida(e.getActionCommand());
+						
+												
+				try {	
+					BufferedReader doServidor = new BufferedReader(new InputStreamReader(cliente.socket.getInputStream()));
+					System.out.println("Antes de receber");
+					codigo = doServidor.readLine();
+					
+					System.out.println("Codigo na tela: "+ codigo);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				
 				tela.setVisible(false);
+				
+				Tela_Jogo tela2 = new Tela_Jogo(cliente, codigo);
+
 				tela2.setVisible(true);
 			}
 		});
@@ -112,7 +130,7 @@ public class Tela_Principal extends JFrame {
 					cliente = new Cliente();
 					cliente.criarPartida(codigo);
 					if(cliente.existePartidaPrivada().equals("1")) {
-						Tela_Jogo tela2 = new Tela_Jogo(cliente, codigo);
+						Tela_Jogo tela2 = new Tela_Jogo(cliente, null);
 					
 						tela.setVisible(false);
 						tela2.setVisible(true);

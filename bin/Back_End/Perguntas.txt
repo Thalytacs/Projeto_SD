@@ -47,4 +47,4 @@ Qual é o processo pelo qual as plantas produzem sua própria comida?;Respiraç�
 Quem é considerado o pai da psicanálise?;Sigmund Freud;Carl Jung;Alfred Adler;Ivan Pavlov / Gabarito: a Sigmund Freud
 Qual é a capital do Acre?;Aracaju;Rio Branco;Boa Vista;Salvador / Gabarito: b Rio Branco
 Em que ano foi lançado o filme "Titanic" no Brasil?;1989;1994;1998;2000 / Gabarito: c 1998
-Qual número está escrito no expresso de Hogwarts?;9 3/4;5923;1999;5972 / Gabarito d 5972
+Qual número está escrito no expresso de Hogwarts?;1879;5923;1999;5972 / Gabarito: d 5972
