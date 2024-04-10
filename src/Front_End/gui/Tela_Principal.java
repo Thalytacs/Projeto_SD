@@ -31,6 +31,8 @@ import javax.swing.JOptionPane;
 import java.awt.SystemColor;
 import java.awt.Panel;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
 
 public class Tela_Principal extends JFrame {
 	private JTextField textField;
@@ -42,9 +44,7 @@ public class Tela_Principal extends JFrame {
 		tela.setVisible(true);
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public Tela_Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 413);
@@ -65,6 +65,12 @@ public class Tela_Principal extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
+		Label label = new Label("Jogo das Perguntas");
+		label.setFont(new Font("Arial", Font.BOLD, 35));
+		label.setBounds(123, 61, 336, 57);
+		contentPane.add(label);
+		
+		
 		//Botão para iniciar partida publica
 		Button buttonPublic = new Button("Partida pública");
 		buttonPublic.setActionCommand("1");
@@ -73,11 +79,13 @@ public class Tela_Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cliente = new Cliente();
 				cliente.criarPartida(e.getActionCommand());
-						
-				Tela_Jogo tela2 = new Tela_Jogo(cliente, null);
+				
+				String[] perguntas = cliente.receberPerguntas();
+				
+				Tela_Jogo telaJogo = new Tela_Jogo(cliente, perguntas);
 				
 				tela.setVisible(false);
-				tela2.setVisible(true);
+				telaJogo.setVisible(true);
 			}
 		});
 		buttonPublic.setBounds(160, 20, 134, 29);
@@ -95,7 +103,6 @@ public class Tela_Principal extends JFrame {
 				
 				cliente.criarPartida(e.getActionCommand());
 						
-												
 				try {	
 					BufferedReader doServidor = new BufferedReader(new InputStreamReader(cliente.socket.getInputStream()));
 					System.out.println("Antes de receber");
@@ -106,11 +113,20 @@ public class Tela_Principal extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				tela.setVisible(false);
+				Dialog d = new Dialog(codigo);
 				
-				Tela_Jogo tela2 = new Tela_Jogo(cliente, codigo);
-
-				tela2.setVisible(true);
+				d.setVisible(true);
+				
+				
+				d.update(getGraphics());
+				d.setVisible(false);
+				
+				String[] perguntas = cliente.receberPerguntas();
+				
+				Tela_Jogo telaJogo = new Tela_Jogo(cliente, perguntas);
+				
+				tela.setVisible(false);
+				telaJogo.setVisible(true);
 			}
 		});
 		buttonPrivate.setBounds(160, 55, 134, 29);
@@ -129,11 +145,15 @@ public class Tela_Principal extends JFrame {
 				} else {
 					cliente = new Cliente();
 					cliente.criarPartida(codigo);
+					
 					if(cliente.existePartidaPrivada().equals("1")) {
-						Tela_Jogo tela2 = new Tela_Jogo(cliente, null);
+						
+						String[] perguntas = cliente.receberPerguntas();
+						
+						Tela_Jogo telaJogo = new Tela_Jogo(cliente, perguntas);
 					
 						tela.setVisible(false);
-						tela2.setVisible(true);
+						telaJogo.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(null, "Código inválido", "Erro", JOptionPane.ERROR_MESSAGE);
 					}					
@@ -141,11 +161,15 @@ public class Tela_Principal extends JFrame {
 			}
 		});
 		buttonConnectPrivate.setBounds(238, 104, 141, 29);
-		panel.add(buttonConnectPrivate);
+		panel.add(buttonConnectPrivate);	
+	}
+	
+	public JTextPane atualizaCodigo(String codigo) {
+		JTextPane textCodigo = new JTextPane();
+		textCodigo.setEditable(false);
+		textCodigo.setText(codigo);
+		textCodigo.setBounds(313, 59, 115, 25);
 		
-		Label label = new Label("Jogo das Perguntas");
-		label.setFont(new Font("Arial", Font.BOLD, 35));
-		label.setBounds(123, 61, 336, 57);
-		contentPane.add(label);
+		return textCodigo;
 	}
 }

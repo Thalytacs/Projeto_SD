@@ -27,20 +27,10 @@ public class Partida_Publica extends Thread {
 
 
     public void run() {
-        try {
-        	//BufferedReader teste1 = new BufferedReader(new InputStreamReader(jogador1.getSocket().getInputStream()));
-        	//BufferedReader teste2 = new BufferedReader(new InputStreamReader(jogador2.getSocket().getInputStream()));
-        	
-        	//System.out.println(teste1.readLine() + "\n" + teste2.readLine());
-        	
-        	
-            // Vai iniciar duas threads, uma para cada jogador
-            // No final usa join
-        	
-        	
-        	
+    	
+    	try {
             String[] gabarito = new String[10];
-            String caminho = "C:\\Users\\thaly\\Desktop\\Projeto_SD\\src\\Back_End\\Perguntas.txt";
+            String caminho = "C:\\Users\\Faculdade\\OneDrive - ufs.br\\Área de Trabalho\\Projeto_SD\\src\\Back_End\\Perguntas.txt";
             BufferedReader lerArquivo = new BufferedReader(new FileReader(caminho));
 
             Set<Integer> valoresUnicos = new HashSet<>();

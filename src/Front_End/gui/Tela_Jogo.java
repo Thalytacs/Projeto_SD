@@ -9,9 +9,13 @@ import Back_End.Cliente;
 
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.FlowLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -22,25 +26,9 @@ public class Tela_Jogo extends JFrame {
 	private String[] perguntas;
 	private int cont = 1;
 	
-	/**
-	 * Create the frame.
-	 * @wbp.parser.constructor
-	 */
-	public Tela_Jogo(Cliente cliente, String codigo) {
-		
-		this.cliente = cliente;
-		JOptionPane aviso = new JOptionPane();
-		
-		if(codigo != null) {
-			aviso.showInputDialog(codigo);
-			
-			setVisible(true);
-			aviso.setVisible(true);
-		}
-		
-		perguntas = cliente.receberPerguntas();
-		
-		aviso.setVisible(false);
+	
+	public Tela_Jogo(Cliente cliente, String[] perguntas) {
+		this.perguntas = perguntas;		
 			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 413);

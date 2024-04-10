@@ -76,10 +76,12 @@ public class Cliente {
     	String resp = "0";
     	
     	try {
-    		BufferedReader doServidor = new BufferedReader(
-				new InputStreamReader(socket.getInputStream()));
-    	
+    		BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    		
+    		System.out.println("Chegou na função");
     		resp = doServidor.readLine();
+    		
+    		System.out.println(resp);
     	} catch(Exception e) {
     		System.out.println(e.getMessage());
     	}
@@ -87,41 +89,3 @@ public class Cliente {
     	return resp;
     }
 }
-
-/*
-try {
-    Scanner scanner = new Scanner(System.in);
-
-    System.setOut(new PrintStream(System.out, true, "UTF-8"));
-    String[] perguntas = new String[10];
-    // String[] respostas = new String[10];
-
-    
-    
-
-    //Váriavel para enviar informações para o servidor
-   
-
-    
-    // BufferReader para comunicação com a partida (Publica e Privada), não
-    // implementado certo ainda
-    BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    for (int i = 0; i < 10; i++) {
-        perguntas[i] = doServidor.readLine();
-    }
-
-    //Mostrar perguntas na tela e pegar respostas
-    for (String pergunta : perguntas) {
-        System.out.println(pergunta);
-        paraServidor.println(scanner.nextLine());
-    }
-
-    //Mandar pro servidor as respostas
-    System.out.println(doServidor.readLine());
-
-    socket.close();
-    scanner.close();
-} catch (IOException e) {
-    e.printStackTrace();
-}
- */
