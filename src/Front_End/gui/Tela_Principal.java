@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Button;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Canvas;
 import java.awt.Font;
 import javax.swing.JTextArea;
@@ -33,10 +34,12 @@ import java.awt.Panel;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.JProgressBar;
 
 public class Tela_Principal extends JFrame {
-	private JTextField textField;
+	
 	private static Tela_Principal tela;
+	private JTextField textField;
 	private Cliente cliente;
 
 	public static void main(String[] args) {
@@ -48,6 +51,8 @@ public class Tela_Principal extends JFrame {
 	public Tela_Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 413);
+		
+		//Painel de opções
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -71,6 +76,10 @@ public class Tela_Principal extends JFrame {
 		contentPane.add(label);
 		
 		
+		//Painel para aguardar novo jogador
+		PanelCarregamento painel = new PanelCarregamento();
+			
+		
 		//Botão para iniciar partida publica
 		Button buttonPublic = new Button("Partida pública");
 		buttonPublic.setActionCommand("1");
@@ -78,9 +87,18 @@ public class Tela_Principal extends JFrame {
 			//Ação do botão
 			public void actionPerformed(ActionEvent e) {
 				cliente = new Cliente();
+				
+				contentPane.setVisible(false);
+				setContentPane(painel);
+				painel.setVisible(true);
+				
+				setVisible(true);
+				update(getGraphics());
+				
 				cliente.criarPartida(e.getActionCommand());
 				
 				String[] perguntas = cliente.receberPerguntas();
+				
 				
 				Tela_Jogo telaJogo = new Tela_Jogo(cliente, perguntas);
 				
@@ -113,13 +131,21 @@ public class Tela_Principal extends JFrame {
 					e1.printStackTrace();
 				}
 				
+				contentPane.setVisible(false);
+				setContentPane(painel);
+				painel.setVisible(true);
+				
+				setVisible(true);
+				update(getGraphics());
+				
 				Dialog d = new Dialog(codigo);
 				
 				d.setVisible(true);
 				
-				
 				d.update(getGraphics());
+				
 				d.setVisible(false);
+				
 				
 				String[] perguntas = cliente.receberPerguntas();
 				
@@ -161,7 +187,7 @@ public class Tela_Principal extends JFrame {
 			}
 		});
 		buttonConnectPrivate.setBounds(238, 104, 141, 29);
-		panel.add(buttonConnectPrivate);	
+		panel.add(buttonConnectPrivate);
 	}
 	
 	public JTextPane atualizaCodigo(String codigo) {

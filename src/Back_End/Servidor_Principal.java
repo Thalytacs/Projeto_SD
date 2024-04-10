@@ -70,18 +70,22 @@ public class Servidor_Principal {
                 }
 
                 else {
+                	DataOutputStream paraCliente = new DataOutputStream(socket.getOutputStream());
                 	String existe = "0";
                 	
                     for (Partida_Privada partida : partidasPrivadas) {
                         if (Integer.parseInt(resultado) == partida.codigo) {
+                        	existe = "1";
+                        	paraCliente.writeBytes(existe + "\n");
                             partida.setJogador2(new Conexao_Jogador(socket));
                             partida.start();
-                            existe = "1";
+                            
                             break;
                         }
                     }
-                	PrintWriter paraCliente = new PrintWriter(socket.getOutputStream(), true);
-                	paraCliente.print(existe + '\n');
+                    if(!existe.equals("1")) {
+                    	paraCliente.writeBytes("0" + '\n');
+                    }
                 }
             }
         } catch (Exception e) {

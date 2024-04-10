@@ -8,35 +8,24 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
+import java.awt.Font;
+import javax.swing.JLabel;
 
 public class Dialog extends JDialog {
 
-	private static final long serialVersionUID = 1L;
-
-	/*
-	public static void main(String[] args) {
-		try {
-			Dialog dialog = new Dialog("1234");
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
 	public Dialog(String codigo) {
-		setBounds(500, 300, 150, 150);
+		setBounds(100, 100, 602, 413);
 		getContentPane().setLayout(null);
-		{
-			JTextPane textPane = new JTextPane();
-			textPane.setEditable(false);
-			textPane.setBounds(10, 40, 114, 20);
-			textPane.setText("Código: " + codigo);
-			getContentPane().add(textPane);
-		}
+		
+		JLabel lblNewLabel = new JLabel("Aguardando Oponente");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNewLabel.setBounds(120, 101, 363, 79);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel2 = new JLabel();
+		lblNewLabel2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel2.setText("Código: " + codigo);
+		lblNewLabel2.setBounds(221, 216, 172, 49);
+		getContentPane().add(lblNewLabel2);
 	}
-
 }

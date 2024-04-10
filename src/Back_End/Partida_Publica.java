@@ -2,6 +2,7 @@ package Back_End;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -30,7 +31,7 @@ public class Partida_Publica extends Thread {
     	
     	try {
             String[] gabarito = new String[10];
-            String caminho = "C:\\Users\\Faculdade\\OneDrive - ufs.br\\Área de Trabalho\\Projeto_SD\\src\\Back_End\\Perguntas.txt";
+            String caminho = "C:\\Users\\thaly\\Desktop\\Projeto_SD\\src\\Back_End\\Perguntas.txt";
             BufferedReader lerArquivo = new BufferedReader(new FileReader(caminho));
 
             Set<Integer> valoresUnicos = new HashSet<>();
@@ -58,6 +59,8 @@ public class Partida_Publica extends Thread {
                 if (i == listaOrdenada.get(contador)) {
                     perguntas[contador] = linha.split("/")[0];
                     gabarito[contador] = linha.split(":")[1];
+                    System.out.println("Gabarito: " + gabarito[contador]);
+                    System.out.println("Gabarito: " + gabarito[contador].substring(1, 2));
                     contador++;
                 }
             }
@@ -87,32 +90,48 @@ public class Partida_Publica extends Thread {
 
             jogador1.join();
             jogador2.join();
-
+            
+            System.out.println("Chegou as respostas");
+            
             String[] resposta1 = jogador1.getResposta();
             String[] resposta2 = jogador2.getResposta();
+            
+            System.out.println("Jogador 1: " + resposta1[0] + "\nJogador2: " + resposta2[0]);
 
             int pontosJog1 = 0;
             int pontosJog2 = 0;
+            
             for (int index = 0; index < 10; index++) {
-                if (resposta1[index].equals(gabarito[1].substring(0, 1))) {
+                if (resposta1[index].equals(gabarito[index].substring(1, 2))) {
+                	System.out.println("Gabarito: " + gabarito[index].substring(1, 2));
+                	System.out.println("Resposta: " + resposta1[index]);
                     pontosJog1 += 1;
                 }
-                if (resposta2[index].equals(gabarito[1].substring(0, 1))) {
+                if (resposta2[index].equals(gabarito[index].substring(1, 2))) {
+                	System.out.println("Gabarito: " + gabarito[index].substring(1, 2));
+                	System.out.println("Resposta: " + resposta2[index]);
                     pontosJog2 += 1;
                 }
             }
-
+            
+            System.out.println("Jogador 1: " + pontosJog1);
+            System.out.println("Jogador 2: " + pontosJog2);
+            
+            DataOutputStream respCliente1 = new DataOutputStream(jogador1.getSocket().getOutputStream());
+            DataOutputStream respCliente2 = new DataOutputStream(jogador2.getSocket().getOutputStream());
+            
             if (pontosJog1 > pontosJog2) {
-                ganhador = jogador1.getNome();
+            	respCliente1.writeBytes("Parabens! Voce ganhou." + "\n");
+            	respCliente2.writeBytes("Que pena! Voce perdeu." + "\n");
+                
             } else if (pontosJog1 < pontosJog2) {
-                ganhador = jogador2.getNome();
+            	respCliente2.writeBytes("Parabens! Voce ganhou." + "\n");
+            	respCliente1.writeBytes("Que pena! Voce perdeu." + "\n");
+                
             } else {
-                ganhador = "Empate";
+            	respCliente1.writeBytes("Empate." + "\n");
+            	respCliente2.writeBytes("Empate." + "\n");
             }
-
-            paraCliente1.write(ganhador, 0, ganhador.length());
-            paraCliente2.write(ganhador, 0, ganhador.length());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

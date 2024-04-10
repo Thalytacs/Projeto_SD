@@ -4,6 +4,7 @@ import Front_End.*;
 import Front_End.gui.Tela_Principal;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -62,9 +63,11 @@ public class Cliente {
     //Método para enviar as respostas para a conexão jogador
     public void enviarRespostas() {
     	try {
-    		PrintWriter paraServidor = new PrintWriter(socket.getOutputStream(), true);
+    		DataOutputStream paraServidor = new DataOutputStream(socket.getOutputStream());
             for(int i = 0; i < 10; i++) {
-            	paraServidor.print(respostas[i]);
+            	paraServidor.writeBytes(respostas[i] + "\n");
+            	
+            	System.out.println("Enviou resposta para o servidor");
             }
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
@@ -85,6 +88,23 @@ public class Cliente {
     	} catch(Exception e) {
     		System.out.println(e.getMessage());
     	}
+    	
+    	return resp;
+    }
+    
+    public String getGanhador() {
+    	String resp = "Erro";
+    	
+    	try {
+    		BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    		System.out.println("Chegou para receber a resposta");
+    		
+			resp = doServidor.readLine();
+			
+			System.out.println("Resultado da partida: " + resp);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     	
     	return resp;
     }
