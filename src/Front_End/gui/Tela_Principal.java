@@ -3,39 +3,19 @@ package Front_End.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Back_End.Cliente;
-
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.awt.event.ActionEvent;
 import java.awt.Button;
-import javax.swing.SwingConstants;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Canvas;
 import java.awt.Font;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.Label;
-import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
-import java.awt.SystemColor;
-import java.awt.Panel;
-import javax.swing.JDesktopPane;
-import javax.swing.JLabel;
 import javax.swing.JTextPane;
-import javax.swing.JProgressBar;
-
 public class Tela_Principal extends JFrame {
 	
 	private static Tela_Principal tela;
@@ -123,10 +103,8 @@ public class Tela_Principal extends JFrame {
 						
 				try {	
 					BufferedReader doServidor = new BufferedReader(new InputStreamReader(cliente.socket.getInputStream()));
-					System.out.println("Antes de receber");
 					codigo = doServidor.readLine();
 					
-					System.out.println("Codigo na tela: "+ codigo);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

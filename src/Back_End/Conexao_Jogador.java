@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.concurrent.TimeoutException;
 
 public class Conexao_Jogador extends Thread {
     private Socket socket;
@@ -43,16 +42,11 @@ public class Conexao_Jogador extends Thread {
     public void run() {
         try {
             BufferedReader doCliente = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            //nome = doCliente.readLine();
-            
-            System.out.println("Entrou no conexão jogador");
 
             socket.setSoTimeout(300000);
             try {
                 for (int i = 0; i < 10; i++) {
-                	System.out.println("Entrou no for do conexão servidor");
                     resposta[i] = doCliente.readLine();
-                    System.out.println("Chegou uma pergunta: " + resposta[i]);
                 }    
             } catch (SocketTimeoutException e) {
                 for (int i = 0; i < 10; i++) {

@@ -1,16 +1,11 @@
 package Back_End;
 
-import Front_End.*;
-import Front_End.gui.Tela_Principal;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Cliente {
     private static final String SERVER_ADDRESS = "localhost";
@@ -41,11 +36,8 @@ public class Cliente {
     		BufferedReader doServidor = new BufferedReader(
     				new InputStreamReader(socket.getInputStream()));
             for (int i = 0; i < 10; i++) {
-            	System.out.println("Pegou a pergunta");
             	
                 perguntas[i] = doServidor.readLine();
-                
-                System.out.println("Leu "+ perguntas[i]);
             }
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
@@ -66,8 +58,6 @@ public class Cliente {
     		DataOutputStream paraServidor = new DataOutputStream(socket.getOutputStream());
             for(int i = 0; i < 10; i++) {
             	paraServidor.writeBytes(respostas[i] + "\n");
-            	
-            	System.out.println("Enviou resposta para o servidor");
             }
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
@@ -80,8 +70,6 @@ public class Cliente {
     	
     	try {
     		BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    		
-    		System.out.println("Chegou na função");
     		resp = doServidor.readLine();
     		
     		System.out.println(resp);
@@ -97,11 +85,8 @@ public class Cliente {
     	
     	try {
     		BufferedReader doServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    		System.out.println("Chegou para receber a resposta");
-    		
 			resp = doServidor.readLine();
-			
-			System.out.println("Resultado da partida: " + resp);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

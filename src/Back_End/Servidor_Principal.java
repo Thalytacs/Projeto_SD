@@ -1,12 +1,9 @@
 package Back_End;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -38,12 +35,10 @@ public class Servidor_Principal {
                     if (partidasPublicas.isEmpty()) {
                         partida = new Partida_Publica(jogador);
                         partidasPublicas.add(partida);
-                        System.out.println("Criou partida publica");
                     }else{
                         partida = partidasPublicas.remove(0);
                         partida.setJogador2(jogador);
                         partida.start();
-                        System.out.println("Startou partida publica");
                     }
                     
                 }
@@ -55,13 +50,8 @@ public class Servidor_Principal {
                     Partida_Privada partida = new Partida_Privada(jogador);
                     
                     try {
-            			DataOutputStream paraCliente = new DataOutputStream(jogador.getSocket().getOutputStream());
-            			
-            			System.out.println("Antes");
-            			
+            			DataOutputStream paraCliente = new DataOutputStream(jogador.getSocket().getOutputStream());	
             			paraCliente.writeBytes(partida.codigo.toString() + '\n');
-            			
-            			System.out.println("Depois");
             		} catch (IOException e) {
             			e.printStackTrace();
             		}

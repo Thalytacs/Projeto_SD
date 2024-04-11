@@ -4,23 +4,15 @@ package Front_End.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Back_End.Cliente;
-
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Label;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 
 public class Tela_Jogo extends JFrame {
@@ -49,12 +41,12 @@ public class Tela_Jogo extends JFrame {
 		contentPaneResultado.setLayout(null);
 		
 		Label label = new Label();
-		label.setFont(new Font("Arial", Font.BOLD, 35));
-		label.setBounds(88, 61, 419, 57);
+		label.setFont(new Font("Arial", Font.BOLD, 30));
+		label.setBounds(50, 61, 500, 57);
 		contentPaneResultado.add(label);
 		contentPaneResultado.setVisible(false);
 		
-		
+		//Primeira pergunta
 		JLabel pergunta = new JLabel(perguntas[0].split(";")[0]);
 		pergunta.setBounds(23, 39, 553, 107);
 		contentPane.add(pergunta);
@@ -208,8 +200,7 @@ public class Tela_Jogo extends JFrame {
 					
 					setContentPane(painel);
 					painel.setVisible(true);
-					update(getGraphics());
-					
+					update(getGraphics());	
 					
 					cliente.enviarRespostas();
 					
@@ -228,69 +219,5 @@ public class Tela_Jogo extends JFrame {
 				}
 			}
 		});
-		
-		
-		/*
-		JButton btnNewButton = new JButton("Escolher");
-		btnNewButton.setBackground(new Color(128, 255, 128));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (buttonOptA.isSelected()) {
-					cliente.addRespostas("a");
-					
-					buttonOptA.setSelected(false);
-					
-					buttonOptA.setText("A) " + perguntas[cont].split(";")[1]);
-					buttonOptB.setText("B) " + perguntas[cont].split(";")[2]);
-					buttonOptC.setText("C) " + perguntas[cont].split(";")[3]);
-					buttonOptD.setText("D) " + perguntas[cont].split(";")[4]);
-					pergunta.setText(perguntas[cont].split(";")[0]);
-					cont++;
-				}
-				else if (buttonOptB.isSelected()) {
-					cliente.addRespostas("b");
-					
-					buttonOptB.setSelected(false);
-					
-					buttonOptA.setText("A) " + perguntas[cont].split(";")[1]);
-					buttonOptB.setText("B) " + perguntas[cont].split(";")[2]);
-					buttonOptC.setText("C) " + perguntas[cont].split(";")[3]);
-					buttonOptD.setText("D) " + perguntas[cont].split(";")[4]);
-					pergunta.setText(perguntas[cont].split(";")[0]);
-					cont++;
-				}
-				else if (buttonOptC.isSelected()) {
-					cliente.addRespostas("c");
-					
-					buttonOptC.setSelected(false);
-					
-					buttonOptA.setText("A) " + perguntas[cont].split(";")[1]);
-					buttonOptB.setText("B) " + perguntas[cont].split(";")[2]);
-					buttonOptC.setText("C) " + perguntas[cont].split(";")[3]);
-					buttonOptD.setText("D) " + perguntas[cont].split(";")[4]);
-					pergunta.setText(perguntas[cont].split(";")[0]);
-					cont++;
-				}
-				else if (buttonOptD.isSelected()) {
-					cliente.addRespostas("d");
-					
-					buttonOptD.setSelected(false);
-					
-					buttonOptA.setText("A) " + perguntas[cont].split(";")[1]);
-					buttonOptB.setText("B) " + perguntas[cont].split(";")[2]);
-					buttonOptC.setText("C) " + perguntas[cont].split(";")[3]);
-					buttonOptD.setText("D) " + perguntas[cont].split(";")[4]);
-					pergunta.setText(perguntas[cont].split(";")[0]);
-					cont++;
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Selecione uma opção", "Erro", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		
-		btnNewButton.setBounds(431, 340, 89, 23);
-		contentPane.add(btnNewButton); */
 	}
 }
