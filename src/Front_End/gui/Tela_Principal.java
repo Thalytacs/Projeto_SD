@@ -78,7 +78,7 @@ public class Tela_Principal extends JFrame {
 				cliente.criarPartida(e.getActionCommand());
 				
 				String[] perguntas = cliente.receberPerguntas();
-				
+				System.out.println("Passou");
 				
 				Tela_Jogo telaJogo = new Tela_Jogo(cliente, perguntas);
 				
